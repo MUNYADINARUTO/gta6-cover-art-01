@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Shore Cover Studio — GTA-style cover art maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <section class="controls" aria-label="Cover controls">
+    <h1>Neon Shore <span>Cover Studio</span></h1>
+    <p class="tagline">Your photos, framed like a Vice City sunset poster. Pick a layout, a grade and a caption — export a PNG to share.</p>
+
+    <fieldset>
+      <legend>1 · Photos</legend>
+      <p class="hint">One photo fills every panel, or load up to three and assign each panel its own. Photos never leave your machine.</p>
+      <div class="slots">
+        <div class="slot">
+          <img id="thumb1" alt="Photo 1 slot, empty until a photo is loaded" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==">
+          <label>Photo 1 <input id="photo1" type="file" accept="image/*"></label>
+          <button id="sample1" type="button">Try sample</button>
+        </div>
+        <div class="slot">
+          <img id="thumb2" alt="Photo 2 slot, empty until a photo is loaded" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==">
+          <label>Photo 2 <input id="photo2" type="file" accept="image/*"></label>
+          <button id="sample2" type="button">Try sample</button>
+        </div>
+        <div class="slot">
+          <img id="thumb3" alt="Photo 3 slot, empty until a photo is loaded" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==">
+          <label>Photo 3 <input id="photo3" type="file" accept="image/*"></label>
+          <button id="sample3" type="button">Try sample</button>
+        </div>
+      </div>
+      <label class="check"><input id="onePhoto" type="checkbox" checked> One photo fills every panel</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>2 · Layout</legend>
+      <div id="layouts" class="row"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>3 · Grade</legend>
+      <div id="grades" class="row"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>4 · Caption</legend>
+      <label>Title <input id="title" type="text" maxlength="30" value="NEON SHORE"></label>
+      <label>Subtitle <input id="subtitle" type="text" maxlength="40" value="a sunset story"></label>
+      <div class="stars-row"><span>Wanted stars</span><span id="stars" class="stars"></span></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>5 · Frame the selected panel</legend>
+      <p class="hint"><span id="panelLabel">Panel 1 of 4</span> — click a panel in the preview, then drag it to pan or scroll to zoom.</p>
+      <label>Zoom <input id="zoom" type="range" min="100" max="300" value="115"></label>
+      <div class="row">
+        <button type="button" data-assign="0">Use photo 1</button>
+        <button type="button" data-assign="1">Use photo 2</button>
+        <button type="button" data-assign="2">Use photo 3</button>
+        <button id="resetCrops" type="button">Reset crops</button>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>6 · Export</legend>
+      <div id="sizes" class="row"></div>
+      <button id="export" type="button" class="big">Export PNG</button>
+      <button id="exportAll" type="button">Export all three sizes</button>
+      <p id="status" role="status"></p>
+    </fieldset>
+  </section>
+  <section class="preview" aria-label="Live cover preview">
+    <canvas id="cover" width="900" height="900" aria-label="The cover, live preview"></canvas>
+    <p class="preview-note">Live preview — click any panel to select it, drag to pan, scroll to zoom.</p>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+/* Neon Shore Cover Studio — a dark neon editor: deep purple panels, hot-pink
+   accents, cyan highlights, the bundled Anton for headings. */
+@font-face {
+  font-family: 'Anton';
+  src: url('./fonts/Anton-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Pacifico';
+  src: url('./fonts/Pacifico-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; background: #160a24; color: #f4eefc; font: 15px/1.45 system-ui, sans-serif; }
+.app { display: flex; gap: 28px; align-items: flex-start; justify-content: center; padding: 24px; }
+.controls { width: 340px; flex: none; display: flex; flex-direction: column; gap: 16px; }
+.controls h1 { margin: 0; font-family: Anton, 'Arial Black', sans-serif; font-size: 34px; letter-spacing: 1px; line-height: 1; color: #fff; text-transform: uppercase; }
+.controls h1 span { display: block; background: linear-gradient(90deg, #ff7a2f, #ff2e88, #19e3ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.tagline { margin: 0; color: #c9b8e8; font-size: 14px; }
+fieldset { margin: 0; padding: 14px; border: 1px solid #4b2a72; border-radius: 10px; background: #1f0f33; }
+legend { font-family: Anton, 'Arial Black', sans-serif; letter-spacing: 1px; font-size: 14px; text-transform: uppercase; color: #ffd76a; padding: 0 6px; }
+.hint { margin: 0 0 10px; color: #b7a6d4; font-size: 13px; }
+label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 13px; margin-bottom: 10px; }
+label:last-child { margin-bottom: 0; }
+label.check { flex-direction: row; align-items: center; gap: 8px; margin: 10px 0 0; }
+input[type=text] { font: inherit; padding: 9px 10px; border: 1px solid #5b3a86; border-radius: 6px; background: #2a1546; color: #fff; }
+input[type=text]:focus { outline: 2px solid #19e3ff; outline-offset: 1px; }
+input[type=range] { width: 100%; accent-color: #ff2e88; }
+input[type=file] { font: inherit; font-size: 12px; color: #c9b8e8; }
+button { font: inherit; font-weight: 700; padding: 9px 12px; border: 1px solid #5b3a86; border-radius: 6px; background: #2a1546; color: #f4eefc; cursor: pointer; }
+button:hover { border-color: #19e3ff; }
+button.big { width: 100%; padding: 13px; font-size: 17px; background: linear-gradient(90deg, #ff7a2f, #ff2e88); border: 0; color: #fff; margin-top: 10px; }
+button.big:hover { filter: brightness(1.1); }
+.row { display: flex; flex-wrap: wrap; gap: 8px; }
+.row button { flex: 1 1 auto; }
+.pick.on { background: #ff2e88; border-color: #ff2e88; color: #fff; }
+.slots { display: flex; gap: 8px; }
+.slot { flex: 1; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.slot img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 6px; border: 1px dashed #5b3a86; display: block; background: #2a1546; }
+.slot label { margin: 0; font-size: 12px; }
+.slot input[type=file] { width: 100%; }
+.slot button { padding: 6px; font-size: 12px; }
+.stars-row { display: flex; align-items: center; justify-content: space-between; font-weight: 600; font-size: 13px; }
+.stars { display: flex; gap: 2px; }
+.star { border: 0; background: none; padding: 2px 4px; font-size: 20px; color: rgba(255,255,255,0.25); }
+.star.on { color: #ffd23e; text-shadow: 0 0 8px rgba(255,210,62,0.7); }
+#status { margin: 10px 0 0; min-height: 1.4em; color: #8ff2ff; font-size: 13px; }
+.preview { flex: 1; max-width: 900px; position: sticky; top: 24px; }
+.preview canvas { width: 100%; height: auto; display: block; border-radius: 4px; box-shadow: 0 12px 40px rgba(0,0,0,0.55); cursor: grab; background: #fff; }
+.preview canvas:active { cursor: grabbing; }
+.preview-note { margin: 10px 0 0; color: #b7a6d4; font-size: 13px; text-align: center; }
+@media (max-width: 900px) {
+  .app { flex-direction: column; align-items: center; }
+  .controls { width: 100%; max-width: 560px; }
+  .preview { position: static; width: 100%; }
+}
+/* Screenshot scenes: the cover alone, full frame. */
+body.shot-cover { background: #fff; }
+body.shot-cover .controls, body.shot-cover .preview-note { display: none; }
+body.shot-cover .app { padding: 0; display: block; }
+body.shot-cover .preview { max-width: none; position: static; }
+body.shot-cover canvas { width: 100vw; height: 100vh; object-fit: fill; border-radius: 0; box-shadow: none; }
